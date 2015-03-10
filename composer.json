@@ -6,13 +6,12 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"doctrine/dbal": "~2.5"
+		"doctrine/dbal": "~2.5",
+		"barryvdh/laravel-ide-helper": "~2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
-		"phpspec/phpspec": "~2.1",
-		"xethron/migrations-generator": "dev-l5",
-    "way/generators": "dev-feature/laravel-five-stable"
+		"phpspec/phpspec": "~2.1"
 	},
 	"autoload": {
 		"classmap": [
@@ -43,11 +42,6 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"repositories": [
-    {
-        "type": "git",
-        "url": "git@github.com:jamisonvalenta/Laravel-4-Generators.git"
-    }
-]
+	}
+
 }

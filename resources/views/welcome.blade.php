@@ -30,7 +30,11 @@
             <div class="title">
                 @if (Auth::guest())
                     <li><a href="/auth/register">Register</a></li>
-
+                    {!! Form::open(array('action' => array('userController@registerUser', $user->id))) !!}
+                    {!! Form::label('email', 'E-Mail Address')!!} {!! Form::text('email')!!}<br>
+                    {!! Form::label('password', 'Password')!!} {!! Form::password('password') !!}
+                    {!! Form::submit('Log in') !!}
+                    {!! Form::close() !!}
                 @else
                     <!-- display calendar -->
                     <b>Calendar</b>

@@ -30,6 +30,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+       /* $events = \App\Events::All
+       */
 		return view('home');
 	}
 

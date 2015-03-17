@@ -15,6 +15,17 @@
         #registerForm {
             display: none;
         }
+        .banner{
+            height: 100px;
+            background-color: #0088CC;
+            color: #222222;
+        }
+        .top5per { margin-top:5%; }
+        .top7per { margin-top:7%; }
+        .top10per { margin-top:10%; }
+        .top15per { margin-top:15%; }
+        .top17per { margin-top:17%; }
+        .top30per { margin-top:30%; }
     </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -29,10 +40,10 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            Banner
+            <div class="banner text-center">Banner</div>
         </div>
     </div>
-    <div class="row">
+    <div class="row top5per">
         <div class="col-xs-6">
             <div class="title">
                 @if (Auth::guest())

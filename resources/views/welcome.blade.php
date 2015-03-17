@@ -27,10 +27,24 @@
     </div>
     <div class="row">
         <div class="col-xs-6">
-            <div class="title">Event</div>
+            <div class="title">
+                @if (Auth::guest())
+                    <li><a href="/auth/register">Register</a></li>
+
+                @else
+                    <!-- display calendar -->
+                    <b>Calendar</b>
+                @endif
+            </div>
         </div>
         <div class="col-xs-6">
-            <div class="title">Noticeboard</div>
+            @if (Auth::guest())
+                {!! Form::open(array('url' => 'foo/bar', 'method' => 'put')) !!}
+                {!! Form::label('email', 'E-Mail Address')!!} {!! Form::text('email')!!}<br>
+                {!! Form::label('password', 'Password')!!} {!! Form::password('password') !!}
+                {!! Form::submit('Log in') !!}
+                {!! Form::close() !!}
+            @endif
         </div>
     </div>
 

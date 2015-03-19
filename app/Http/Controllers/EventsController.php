@@ -4,7 +4,7 @@ use App\Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Request;
 
 class EventsController extends Controller {
 
@@ -38,7 +38,9 @@ class EventsController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		Event::create(Request::all());
+
+        return redirect('events');
 	}
 
 	/**

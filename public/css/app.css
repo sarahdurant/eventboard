@@ -14,8 +14,8 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
+hgroup,
 menu,
 nav,
 section,
@@ -252,8 +252,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('/eventboard/vendor/bower_components/bootstrap/dist//fonts/glyphicons-halflings-regular.eot');
-  src: url('/eventboard/vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/eventboard/vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/eventboard/vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/eventboard/vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../../vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot');
+  src: url('../../vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../vendor/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;

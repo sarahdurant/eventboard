@@ -5,10 +5,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>EventBoard</title>
-	<link href="/eventboard/public/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="/eventboard/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/eventboard/vendor/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="/eventboard/public/css/app.css" >
+
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="/eventboard/vendor/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/eventboard/vendor/bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/eventboard/vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eventboard/vendor/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,9 +64,6 @@
 
 	@yield('content')
 
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

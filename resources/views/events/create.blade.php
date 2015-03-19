@@ -9,7 +9,7 @@
         {!! Form::label('title', 'Title:') !!}
         {!! Form::text('title', null, ['class' => 'form-control']) !!}
     </div>
-
+    <input name="organizerID" id="organizerID" type="hidden" value="1">
     <div class="form-group">
         {!! Form::label('description', 'Description:') !!}
         {!! Form::text('description', null, ['class' => 'form-control']) !!}
@@ -18,7 +18,7 @@
     <div class="form-group">
         {!! Form::label('startDate', 'Start Date:') !!}
         <div class='input-group date' id='startDateTimePicker'>
-            <input type='text' class="form-control" />
+            <input type='text' name='startDate' id='startDate' class="form-control" />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -27,7 +27,7 @@
     <div class="form-group">
         {!! Form::label('endDate', 'End Date:') !!}
         <div class='input-group date' id='endDateTimePicker'>
-            <input type='text' class="form-control" />
+            <input type='text' name='endDate' id='endDate' class="form-control" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>

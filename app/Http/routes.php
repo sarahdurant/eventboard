@@ -14,8 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
-Route::get('events', 'EventsController@index');
-Route::get('events/{id}', 'EventsController@show');
+Route::resource('events', 'EventsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

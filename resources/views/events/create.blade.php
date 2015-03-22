@@ -20,7 +20,7 @@
     <div class="form-group">
         {!! Form::label('startDate', 'Start Date:') !!}
         <div class='input-group date' id='startDateTimePicker'>
-            <input type='text' class="form-control" />
+            <input type='text' class="form-control"  name="startDate"/>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -29,12 +29,13 @@
     <div class="form-group">
         {!! Form::label('endDate', 'End Date:') !!}
         <div class='input-group date' id='endDateTimePicker'>
-            <input type='text' class="form-control" />
+            <input type='text' class="form-control" name="endDate" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
         </div>
     </div>
+	<input type="hidden" name="organizerID" value="0" />
     <div class="form-group">
         {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
     </div>

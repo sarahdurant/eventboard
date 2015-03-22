@@ -39,7 +39,7 @@ class EventsController extends Controller {
 	public function store()
 	{
 		Event::create(Request::all());
-
+	
         return redirect('events');
 	}
 

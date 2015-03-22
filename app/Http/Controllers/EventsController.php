@@ -2,9 +2,9 @@
 
 use App\Event;
 use App\Http\Requests;
+use App\Http\Requests\CreateEventRequest;
 use App\Http\Controllers\Controller;
 
-use Request;
 
 class EventsController extends Controller {
 
@@ -36,9 +36,9 @@ class EventsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateEventRequest $request)
 	{
-		Event::create(Request::all());
+		Event::create($request->all());
 	
         return redirect('events');
 	}
@@ -75,9 +75,11 @@ class EventsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$event = Event::findOrFail($id);
+
+		$event->update($request->all());
 	}
 
 	/**

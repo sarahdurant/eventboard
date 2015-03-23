@@ -38,9 +38,11 @@ class EventsController extends Controller {
 	 */
 	public function store(EventRequest $request)
 	{
-		Event::create($request->all());
+		 $event = new Event($request->all());
+		 Auth::user()->ownedEvents()->save($event);
+		 Event::create($request->all());
 	
-        return redirect('events');
+     return redirect('events');
 	}
 
 	/**
@@ -55,6 +57,8 @@ class EventsController extends Controller {
 
         return view('events.show', compact('event'));
 	}
+
+
 
 	/**
 	 * Show the form for editing the specified resource.

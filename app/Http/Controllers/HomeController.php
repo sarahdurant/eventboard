@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+use App\Event;
+use Illuminate\Routing\Controller; 
+
 class HomeController extends Controller {
 
 	/*
@@ -32,7 +36,11 @@ class HomeController extends Controller {
 	{
        /* $events = \App\Events::All
        */
-		return view('home');
+		$userID = Auth::id();
+		$events = Event::where('organizerID', '=', $userID)->take(10)->get();
+		
+		return view('home', compact('events'));
 	}
+
 
 }

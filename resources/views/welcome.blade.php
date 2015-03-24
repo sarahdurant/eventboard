@@ -49,13 +49,7 @@
                 @if (Auth::guest())
                     <button id='registerDisplayBtn'>Sign up!</button>
                     <div id="registerForm">
-                    {!! Form::open(array('url' => '/eventboard/public/auth/register', 'method' => 'post')) !!}
-                    {!! Form::label('email', 'E-Mail Address')!!} {!! Form::text('email')!!}<br>
-                    {!! Form::label('password', 'Password')!!} {!! Form::password('password') !!}<br>
-                    {!! Form::label('confirmPassword', 'Confirm Password')!!} {!! Form::password('confirmPassword') !!}<br>
-                    {!! Form::select('isOrganizer', array('P' => 'Participant', 'O' => 'Organizer'), 'P') !!}<br>
-                    {!! Form::submit('Register') !!}
-                    {!! Form::close() !!}
+                    @include('auth/register-form')
                     </div>
                 @else
                     <!-- display calendar -->
@@ -65,11 +59,7 @@
         </div>
         <div class="col-xs-6">
             @if (Auth::guest())
-                {!! Form::open(array('url' => '/eventboard/public/auth/login', 'method' => 'post')) !!}
-                {!! Form::label('email', 'E-Mail Address')!!} {!! Form::text('email')!!}<br>
-                {!! Form::label('password', 'Password')!!} {!! Form::password('password') !!}<br>
-                {!! Form::submit('Log in') !!}
-                {!! Form::close() !!}
+				@include('auth/login-form')
             @endif
         </div>
     </div>

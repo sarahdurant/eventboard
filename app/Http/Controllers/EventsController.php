@@ -2,9 +2,9 @@
 
 use App\Event;
 use App\Http\Requests;
+use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
 
-use Request;
 
 class EventsController extends Controller {
 
@@ -36,11 +36,13 @@ class EventsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(EventRequest $request)
 	{
-		Event::create(Request::all());
-
-        return redirect('events');
+		 $event = new Event($request->all());
+		 Auth::user()->ownedEvents()->save($event);
+		 Event::create($request->all());
+	
+     return redirect('events');
 	}
 
 	/**
@@ -55,6 +57,8 @@ class EventsController extends Controller {
 
         return view('events.show', compact('event'));
 	}
+
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -75,9 +79,11 @@ class EventsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, EventRequest $request)
 	{
-		//
+		$event = Event::findOrFail($id);
+
+		$event->update($request->all());
 	}
 
 	/**

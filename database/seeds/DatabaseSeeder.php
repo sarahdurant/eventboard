@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-        $user = User::create(array(
+        User::create(array(
             'name' => 'sarahdurant',
             'email' => 'sarah@example.com',
             'isOrganizer' => true,
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 100; $i++)
         {
-            $user = User::create(array(
+            User::create(array(
                 'name' => $faker->userName,
                 'email' => $faker->email,
                 'isOrganizer' => $faker->boolean($chanceOfGettingTrue = 50),
@@ -59,7 +59,7 @@ class EventsTableSeeder extends Seeder
             $start = $faker->dateTimeBetween($startDate = 'now', $endDate = '+12 weeks');
             $end = $start->add(new DateInterval('PT' . rand(1,8) . 'H'));
 
-            $event = Event::create(array(
+            Event::create(array(
                 'title' => $faker->text($maxNbChars = 40),
                 'description' => $faker->text($maxNbChars = 512),
                 'startDate' => $start,

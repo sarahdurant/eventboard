@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder {
             'name' => 'sarahdurant',
             'email' => 'sarah@example.com',
             'isOrganizer' => true,
-            'password' => 'qwerty'
+            'password' => bcrypt('qwerty')
         ));
         $this->call('UsersTableSeeder');
         $this->call('EventsTableSeeder');
@@ -36,16 +36,21 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
+        $handle = fopen(".testUserDetails", "w+");
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 100; $i++)
         {
+            $uname = $faker->userName;
+            $pass = $faker->word;
+            fwrite($handle, $uname . " " . $pass . "\r\n");
             User::create(array(
-                'name' => $faker->userName,
+                'name' => $uname,
                 'email' => $faker->email,
                 'isOrganizer' => $faker->boolean($chanceOfGettingTrue = 50),
-                'password' => $faker->word
+                'password' => bcrypt($pass)
             ));
         }
+        fclose($handle);
     }
 }
 

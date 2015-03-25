@@ -2,7 +2,6 @@
 
 use Auth;
 use App\Event;
-use Illuminate\Routing\Controller; 
 
 class HomeController extends Controller {
 

@@ -37,12 +37,16 @@ class HomeController extends Controller {
 	{
        /* Provide all events for given month to that user
        */
-        $dt = Carbon::parse($date);
+			if (!$date) {
+	      $dt = Carbon::now();
+			} else {
+				$dt = Carbon::parse($date);
+			}
 
-		$userID = Auth::id();
-		$events = Event::month($dt)->get();
+			$userID = Auth::id();
+			$events = Event::month($dt)->get();
 		
-		return view('home', compact('events', 'date'));
+		return view('home', compact('events', 'dt', 'date'));
 	}
 
 

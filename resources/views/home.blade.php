@@ -1,6 +1,13 @@
 @extends('app')
 @section('content')
-
+<style>
+.generalEvent {
+	background-color: red;
+}
+.organizerEvent {
+	background-color: blue;
+}
+</style>
 
 <div class="container">
 	<div class="row">
@@ -64,12 +71,24 @@
 </div>
 <script src="/eventboard/js/responsive-calendar.min.js"></script>
     <script type="text/javascript">
+
       $(document).ready(function () {
         $(".responsive-calendar").responsiveCalendar({
           time: '{{ $dt->format('Y-m') }}',
           events: {
 						@foreach($events as $event)
-            	"{{Carbon\Carbon::parse($event->startDate)->format('Y-m-d')}}": {"number": {{ $event->id }}, "url": "/eventboard/events/{{ $event->id }}"},
+            	"{{Carbon\Carbon::parse($event->startDate)->format('Y-m-d')}}": 
+								{ "number": {{ $event->id }}, 
+									"url": "/eventboard/events/{{ $event->id }}",
+									"title": "{{ $event->title }}",
+									"startTime": "{{ $event->startDate }}",
+									"endTime": "{{ $event->endDate }}",
+									@if ($event->organizerID == Auth::id())
+										"class": "organizerEvent"
+									@else
+										"class": "generalEvent"
+									@endif		
+								},
  						@endforeach
 					}
         });

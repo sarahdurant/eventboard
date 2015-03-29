@@ -2,6 +2,7 @@
 
 use Auth;
 use App\Event;
+use Carbon\Carbon;
 
 class HomeController extends Controller {
 
@@ -26,19 +27,22 @@ class HomeController extends Controller {
 		$this->middleware('auth');
 	}
 
+
 	/**
 	 * Show the application dashboard to the user.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($date = null)
 	{
-       /* $events = \App\Events::All
+       /* Provide all events for given month to that user
        */
+        $dt = Carbon::parse($date);
+
 		$userID = Auth::id();
-		$events = Event::where('organizerID', '=', $userID)->take(10)->get();
+		$events = Event::month($dt)->get();
 		
-		return view('home', compact('events'));
+		return view('home', compact('events', 'date'));
 	}
 
 

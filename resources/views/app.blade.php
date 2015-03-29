@@ -7,7 +7,7 @@
 	<title>EventBoard</title>
     <link rel="stylesheet" href="/eventboard/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/eventboard/vendor/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-    <link rel="stylesheet" href="/eventboard/public/css/app.css" >
+    <link rel="stylesheet" href="/eventboard/css/app.css" >
 
 
 	<!-- Fonts -->
@@ -43,7 +43,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/eventboard/">Calendar</a></li>
-					<li><a href="/eventboard/">Search for Events</a></li>
+					<li><a href="/eventboard/events">Search for Events</a></li>
 				</ul>
 
 

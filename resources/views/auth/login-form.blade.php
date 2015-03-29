@@ -15,7 +15,7 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/eventboard/public/auth/login">
+					<form class="form-horizontal" role="form" method="POST" action="/eventboard/auth/login">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -48,7 +48,7 @@
 									Login
 								</button>
 
-								<a href="/eventboard/password/public/email">Forgot Your Password?</a>
+								<a href="/eventboard/password/email">Forgot Your Password?</a>
 							</div>
 						</div>
 					</form>

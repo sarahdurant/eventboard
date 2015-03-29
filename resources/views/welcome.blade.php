@@ -51,15 +51,12 @@
                     <div id="registerForm">
                     @include('auth/register-form')
                     </div>
-                @else
-                    <!-- display calendar -->
-                    <b>Calendar</b>
                 @endif
             </div>
         </div>
         <div class="col-xs-6">
             @if (Auth::guest())
-				@include('auth/login-form')
+							@include('auth/login-form')
             @endif
         </div>
     </div>

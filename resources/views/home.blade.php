@@ -14,10 +14,10 @@
 	</div>
     <div class="row">
         <div class="col-md-12">
-            <a href="{!! Carbon\Carbon::parse($date)->subMonth() !!}" class="btn btn-default">
+            <a href="/eventboard/home/{!! Carbon\Carbon::parse($date)->subMonth() !!}" class="btn btn-default">
                 Previous Month
             </a>
-            <a href="{!! Carbon\Carbon::parse($date)->addMonth() !!}" class="btn btn-default">
+            <a href="/eventboard/home/{!! Carbon\Carbon::parse($date)->addMonth() !!}" class="btn btn-default">
                 Next Month
             </a>
         </div>

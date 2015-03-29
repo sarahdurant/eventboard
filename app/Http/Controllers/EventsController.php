@@ -5,6 +5,7 @@ use App\Event;
 use App\Http\Requests;
 use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 
 class EventsController extends Controller
@@ -42,6 +43,8 @@ class EventsController extends Controller
     {
         $event = new Event($request->all());
         $event->organizerID = Auth::id();
+				$event->startDate = Carbon::parse($event->startDate)->toDateTimeString();
+				$event->endDate = Carbon::parse($event->endDate)->toDateTimeString();
         $event->save();
 
         return redirect('events');

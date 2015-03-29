@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/eventboard/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/eventboard/vendor/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="/eventboard/css/app.css" >
-
+		<link href="/eventboard/css/responsive-calendar.css" rel="stylesheet" media="screen">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

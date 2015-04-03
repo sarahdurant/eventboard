@@ -19,6 +19,8 @@
     <script type="text/javascript" src="/eventboard/vendor/bower_components/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="/eventboard/vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/eventboard/vendor/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/eventboard/js/bootbox.min.js"></script>
+		<script src="/eventboard/js/responsive-calendar.min.js"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,6 +30,7 @@
 	<![endif]-->
 </head>
 <body>
+
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">

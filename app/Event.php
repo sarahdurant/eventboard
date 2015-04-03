@@ -9,7 +9,18 @@ class Event extends Model {
     protected $fillable = ['title', 'description', 'startDate', 'endDate', 'organizerID'];
     protected $hidden = ['remember_token'];
 
+		public function scopeDay($query, $date) {
+        $firstDate = Carbon::parse($date);
+        $lastDate = Carbon::parse($date);
+        $lastDate->setTime(23,59,59);
 
+
+        $query->where('startDate', '>=', $firstDate->toDateTimeString())
+            ->where('endDate', '<=', $lastDate->toDateTimeString());
+
+    }
+		
+		
     public function scopeMonth($query, $date) {
         $firstDate = Carbon::parse($date);
         $lastDate = Carbon::parse($date);
@@ -23,6 +34,10 @@ class Event extends Model {
             ->where('endDate', '<=', $lastDate);
 
     }
+		
+
+
+		
     /**
      * An event may have many tags
      *

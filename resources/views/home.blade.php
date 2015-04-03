@@ -10,6 +10,16 @@
 </style>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/eventboard/home/{!! Carbon\Carbon::parse($date)->subMonth() !!}" class="btn btn-default">
+                Previous Month
+            </a>
+            <a href="/eventboard/home/{!! Carbon\Carbon::parse($date)->addMonth() !!}" class="btn btn-default">
+                Next Month
+            </a>
+        </div>
+    </div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -41,57 +51,64 @@
 			</div>
 		</div>
 	</div>
-    <div class="row">
-        <div class="col-md-12">
-            <a href="/eventboard/home/{!! Carbon\Carbon::parse($date)->subMonth() !!}" class="btn btn-default">
-                Previous Month
-            </a>
-            <a href="/eventboard/home/{!! Carbon\Carbon::parse($date)->addMonth() !!}" class="btn btn-default">
-                Next Month
-            </a>
-        </div>
-    </div>
-    <div class="row">
-		<div class="col-md-12">
-            <b>Events</b> {{ $dt->format('Y-m') }}
-            @foreach($events as $event)
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h3>{{ $event->title }}</h3>
-												{{ $event->id }}
-                        {{ $event->description }} <br>
-                        {{ Carbon\Carbon::parse($event->startDate)->format('Y-m-d') }} <br>
-                        {{ $event->endDate }} <br>
-                        {{ $event->organizerID }} <br>
-                    </div>
-                </div>
-            @endforeach
-		</div>
-    </div>
 </div>
-<script src="/eventboard/js/responsive-calendar.min.js"></script>
-    <script type="text/javascript">
 
-      $(document).ready(function () {
-        $(".responsive-calendar").responsiveCalendar({
-          time: '{{ $dt->format('Y-m') }}',
-          events: {
-						@foreach($events as $event)
-            	"{{Carbon\Carbon::parse($event->startDate)->format('Y-m-d')}}": 
-								{ "number": {{ $event->id }}, 
-									"url": "/eventboard/events/{{ $event->id }}",
-									"title": "{{ $event->title }}",
-									"startTime": "{{ $event->startDate }}",
-									"endTime": "{{ $event->endDate }}",
-									@if ($event->organizerID == Auth::id())
-										"class": "organizerEvent"
-									@else
-										"class": "generalEvent"
-									@endif		
-								},
- 						@endforeach
-					}
-        });
-      });
-    </script>
+
+
+
+<script type="text/javascript">
+
+
+	$(document).ready(function () {
+		function addLeadingZero(num) {
+			if (num < 10) {
+				return "0" + num;
+			} else {
+				return "" + num;
+			}
+		}
+		$(".responsive-calendar").responsiveCalendar({
+			time: '{{ $dt->format('Y-m') }}',
+			events: {
+				@foreach($events as $event)
+					"{{Carbon\Carbon::parse($event->startDate)->format('Y-m-d')}}": 
+						{ 
+							"title": "{{ $event->title }}",
+							"startTime": "{{ $event->startDate }}",
+							"endTime": "{{ $event->endDate }}",
+							@if ($event->organizerID == Auth::id())
+								"class": "organizerEvent"
+							@else
+								"class": "generalEvent"
+							@endif		
+								
+						},
+				@endforeach
+			},
+			onDayClick: function(events) {  
+				var thisDayEvent, key, year, month, day;
+				year = $(this).data('year');
+				month = $(this).data('month');
+				day = $(this).data('day');
+				
+				key = $(this).data('year')+'-'+addLeadingZero( $(this).data('month') )+'-'+addLeadingZero( $(this).data('day') );
+				thisDayEvent = events[key];
+				console.debug("Events: '" + JSON.stringify(events, null, 4) + "'");
+				console.debug("This.year: '" + JSON.stringify(year, null, 4) + "'");
+				console.debug("This.month: '" + JSON.stringify(month, null, 4) + "'");
+				console.debug("This.day: '" + JSON.stringify(day, null, 4) + "'");
+				console.debug("key: '" + JSON.stringify(key, null, 4) + "'");
+				console.debug(this == null);
+				
+				bootbox.dialog({
+					title: "Events on: " + key,
+					message:  '<div class="container-fluid"><iframe src="/eventboard/events/date/' + key + '" width="500" seamless/>'
+									+ '<a href="/eventboard/events/create" class="btn btn-success">Create new event</a></div>',
+					backdrop: false,
+					onEscape: function() {}
+				});
+			}
+		});
+	});
+</script>
 @endsection

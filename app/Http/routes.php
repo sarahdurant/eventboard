@@ -14,7 +14,10 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home/{date?}', 'HomeController@index');
+
+Route::get('events/date/{date}', 'EventsController@listDate');
 Route::resource('events', 'EventsController');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

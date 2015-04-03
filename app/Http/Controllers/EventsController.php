@@ -47,7 +47,7 @@ class EventsController extends Controller
 				$event->endDate = Carbon::parse($event->endDate)->toDateTimeString();
         $event->save();
 
-        return redirect('events');
+        return redirect('home');
     }
 
     /**
@@ -90,7 +90,18 @@ class EventsController extends Controller
         $event->update($request->all());
     }
 
-
+		/**
+     * List all events on the given date
+     *
+     * @param  string $date
+     * @return Response
+     */
+		public function listDate($date) {
+			$dt = Carbon::parse($date);
+			$dayEvents = Event::day($dt)->get();
+			
+			return view('events.list', compact('dayEvents'));
+		}
     /**
      * Remove the specified resource from storage.
      *
@@ -99,6 +110,10 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+				$event = Event::find($id);
+				$title = $event->title;
+        Event::destroy($id);
+				
+				return "Deleted event '{$title}'. ID: {$id}";
     }
 }
